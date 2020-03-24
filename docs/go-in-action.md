@@ -61,6 +61,7 @@ package main
 之外：某个名称（包内方法或变量或常量或结构体等）在包外是否可见，就取决于其首个字符是否为大写字母
 
 **小写**字母开头的程序实体相当于 class 中的带 private 关键词的私有函数
+
 **大写**字母开头的程序实体相当于 class 中的带 public 关键词的公有函数
 
 Go 语言中的程序实体包括变量、常量、函数、结构体和接口。
@@ -244,13 +245,13 @@ arr := [6]int{0, 1, 2, 3, 4, 5}
 ```go
 // 声明了一个二维数组，该数组以两个数组作为元素，其中每个数组中又有4个int类型的元素
 doubleArray := [2][4]int{
-    [4]int{1, 2, 3, 4}, 
-    [4]int{5, 6, 7, 8},
+        [4]int{1, 2, 3, 4}, 
+        [4]int{5, 6, 7, 8},
     }
 // 上面的声明可以简化，直接忽略内部的类型
 easyArray := [2][4]int{
-    {1, 2, 3, 4}, 
-    {5, 6, 7, 8},
+        {1, 2, 3, 4}, 
+        {5, 6, 7, 8},
     }
 ```
 
@@ -514,16 +515,146 @@ goto 语句被多数语言学者所反对，告诫不要使用。
 
 ## 函数
 
+在 Go 语言中，函数的基本特点有：多值返回、可命名的结果形参、Defer语句等。函数可是一等的（first-class）公民，函数类型也是一等的数据类型。这是什么意思呢？
 
+简单来说，这意味着函数不但可以用于封装代码、分割功能、解耦逻辑，还可以化身为普通的值，在其他函数间传递、赋予变量、做类型判断和转换等等，就像切片和字典的值那样。
+而更深层次的含义就是：函数值可以由此成为能够被随意传播的独立逻辑组件（或者说功能模块）。
+
+“函数是一等的公民”是函数式编程（functional programming）的重要特征。Go 语言在语言层面支持了函数式编程。
+
+1. 接受其他的函数作为参数传入；
+2. 把其他的函数作为结果返回。
+
+
+```go
+func funcName(input1 type1, input2 type2) (output1 type1, output2 type2) {
+
+	// 多返回值
+	return value1, value2
+}
+
+// 比较下列用法
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+func SumAndProduct(A, B int) (int, int) {
+	return A+B, A*B
+}
+func SumAndProduct(A, B int) (add int, Multiplied int) {
+	add = A+B
+	Multiplied = A*B
+	return
+}
+
+// 变长参数
+// 变量 arg 是一个int的slice
+func myfunc(arg ...int) {
+    for _, n := range arg {
+        fmt.Printf("And the number is: %d\n", n)
+    }
+}
+
+// 传值，传指针
+// 比较下列用法, 与 C 类似
+func add1(a int) int {
+	a = a+1 // 我们改变了a的值
+	return a //返回一个新值
+}
+func add1(a *int) int { // 请注意，
+	*a = *a+1 		    // 修改了 a 的值
+	return *a 			// 返回该值
+}
+func main() {
+	x := 3
+	fmt.Println("x = ", x)    // 输出 "x = 3"
+	x1 := add1(x)  			  // 调用 add1(x)
+	fmt.Println("x+1 = ", x1) // 输出"x+1 = 4"
+	fmt.Println("x = ", x)    // 输出"x = 3"
+    
+   	x := 3
+	fmt.Println("x = ", x)    // 输出 "x = 3"
+	x1 := add1(&x)  		  // 调用 add1(&x) 传x的地址
+	fmt.Println("x+1 = ", x1) // 输出 "x+1 = 4"
+	fmt.Println("x = ", x)    // 输出 "x = 4"
+}
+```
+
+```go
+lock(l)
+defer unlock(l)  // unlocking happens before surrounding function returns
+
+// prints 3 2 1 0 before surrounding function returns
+for i := 0; i <= 3; i++ {
+	defer fmt.Print(i)
+}
+
+// f returns 42
+func f() (result int) {
+	defer func() {
+		// result is accessed after it was set to 6 by the return statement
+		result *= 7
+	}()
+	return 6
+}
+```
 
 ## 函数类型与传值
  
- 
+
+ ```go
+
+ // 声明了一个函数类型
+ type backTrack(path []int) ([]int)
+ ```
+
  
 ## panic 与 recover
 
+panic 与 recover 机制替代了异常捕获 try/catch
+
+```go
+var user = os.Getenv("USER")
+
+func init() {
+	if user == "" {
+		panic("no value for $USER")
+	}
+}
+```
+
+```go
+// 调用 recover 将停止回溯过程，并返回传入 panic 的实参。 
+// 由于在回溯时只有被推迟函数中的代码在运行，因此 recover 只能在被推迟的函数中才有效。
+
+func server(workChan <-chan *Work) {
+	for work := range workChan {
+		go safelyDo(work)
+	}
+}
+
+func safelyDo(work *Work) {
+	defer func() { // 
+		if err := recover(); err != nil {
+			log.Println("work failed:", err)
+		}
+	}()
+	do(work) // 若 do(work) 触发了Panic，其结果就会被记录， 而该Go程会被干净利落地结束，不会干扰到其它Go程。我们无需在推迟的闭包中做任何事情， recover 会处理好这一切。
+}
+```
+
 
 ## main 与 init 函数
+
+- main 只能应用于package main
+- init 函数 能够应用于所有的 package
+- 定义时不能有任何的参数和返回值
+- 程序会自动调用init()和main()
+- 每个package中的init函数都是可选的，但package main就必须包含一个main函数。
+
+![Go语言程序的初始化和执行顺序](../images/go-main-init-func.png)
 
 
 ## struct
