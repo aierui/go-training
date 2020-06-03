@@ -436,6 +436,17 @@ case x < y: f1()
 case x < z: f2()
 case x == 4: f3()
 }
+
+is even with
+
+if x < y {
+	f1()
+} else if x < z {
+	f2()
+} else if x == 4 {
+	f3()
+}
+
 ```
 
 
