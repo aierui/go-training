@@ -426,16 +426,27 @@ case 0, 1, 2, 3: s1()
 case 4, 5, 6, 7: s2()
 }
 
-switch x := f(); {  // missing switch expression means "true"
+switch x := f(); {
 case x < 0: return -x
 default: return x
 }
 
-switch {
+switch {   // missing switch expression means "true"
 case x < y: f1()
 case x < z: f2()
 case x == 4: f3()
 }
+
+is even with
+
+if x < y {
+	f1()
+} else if x < z {
+	f2()
+} else if x == 4 {
+	f3()
+}
+
 ```
 
 
