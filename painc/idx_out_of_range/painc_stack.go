@@ -17,11 +17,11 @@ func main() {
 
 	goroutine 1 [running]:
 	main.caller2()
-	        /Users/develop/aierui/go-training/painc/q1/painc_stack.go:22 +0x82
+	        /Users/develop/aierui/go-training/painc/builder/painc_stack.go:22 +0x82
 	main.caller1()
-	        /Users/develop/aierui/go-training/painc/q1/painc_stack.go:15 +0x7e
+	        /Users/develop/aierui/go-training/painc/builder/painc_stack.go:15 +0x7e
 	main.main()
-	        /Users/develop/aierui/go-training/painc/q1/painc_stack.go:9 +0x7e
+	        /Users/develop/aierui/go-training/painc/builder/painc_stack.go:9 +0x7e
 	*/
 }
 
