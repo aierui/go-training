@@ -1,3 +1,7 @@
+# Go 范型示例
+
+
+[Run](http://go2goplay.golang.org/)
 
 ```go2
 package main
