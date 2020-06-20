@@ -1,3 +1,5 @@
+
+```go2
 package main
 
 import (
@@ -13,3 +15,4 @@ func Print(type T)(s []T) {
 func main() {
 	Print([]string{"Hello, ", "go-training\n"})
 }
+```
