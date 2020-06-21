@@ -60,4 +60,10 @@ func main() {
 	fmt.Printf("Cat implements interface Pet: %v\n", ok)
 	_, ok = interface{}(&cat).(Pet)
 	fmt.Printf("*Cat implements interface Pet: %v\n", ok)
+	/*
+		The cat: American Shorthair (category: cat, name: "monster")
+		The cat: American Shorthair (category: cat, name: "monster")
+		Cat implements interface Pet: false
+		*Cat implements interface Pet: true
+	*/
 }
