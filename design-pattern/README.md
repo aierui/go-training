@@ -21,37 +21,35 @@
 - [生成器模式](./creational/builder/)
 - [惰性初始模式]()
 - [对象池模式]()
-- [原型模式]()
-- [单例模式]()
+- [原型模式](./creational/prototype/)
+- [单例模式](./creational/singleton/)
 - [多例模式]()
 
 ### 结构型模式
 
-- [适配器模式]()
-- [桥接模式]()
-- [组合模式]()
+- [适配器模式](./structural/adapter/)
+- [桥接模式](./structural/bridge/)
+- [组合模式](./structural/composite/)
 - [修饰模式]()
 - [外观模式]()
-- [享元模式]()
-- [代理模式]()
+- [享元模式](./structural/flyweight/)
+- [代理模式](./structural/proxy/)
 
 ### 行为型模式
 
-- [责任链模式]()
-- [命令模式]()
+- [责任链模式](./behavioral/chain-of-responsibility/)
+- [命令模式](./behavioral/command/)
 - [解释器模式]()
-- [迭代器模式]()
-- [中介者模式]()
-- [备忘录模式]()
+- [迭代器模式](./behavioral/iterator/)
+- [中介者模式](./behavioral/mediator/)
+- [备忘录模式](./behavioral/memento/)
 - [空对象模式]()
-- [观察者模式]()
-- [策略模式]()
-- [访问者模式]()
-- [模版方法模式]()
+- [观察者模式](./behavioral/observer/)
+- [策略模式](./behavioral/strategy/)
+- [访问者模式](./behavioral/vistor/)
+- [模版方法模式](./behavioral/template-method/)
 
 ## 设计模式的关系
-
-
 
 ## 设计模式六大原则
 
