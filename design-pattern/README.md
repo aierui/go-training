@@ -16,9 +16,9 @@
 
 ### 创建型模式
 
-- [抽象工厂模式]()
-- [工厂方法模式]()
-- [生成器模式]()
+- [抽象工厂模式](./creational/abstract-factory/)
+- [工厂方法模式](./creational/factory-method/)
+- [生成器模式](./creational/builder/)
 - [惰性初始模式]()
 - [对象池模式]()
 - [原型模式]()
@@ -83,4 +83,5 @@
 
 - [Design Patterns](https://sourcemaking.com/design_patterns)
 - [Design Patterns](https://refactoring.guru/design-patterns)
+- [All Design Patterns in Go](https://golangbyexample.com/all-design-patterns-golang/)
 - [设计模式](https://zh.wikipedia.org/wiki/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_(%E8%AE%A1%E7%AE%97%E6%9C%BA))
