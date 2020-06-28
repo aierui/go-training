@@ -14,4 +14,10 @@
 
     > 由于 Go 的严格类型，编译器总是知道要传递给 len 函数的类型，因此它会针对不同的类型传递给不同的函数，这可以在编译时确定。在大多数情况下，您试图获取切片的长度，在这种情况下，len 函数只需要返回该切片的结构的 len 字段（因为切片实际上是一个结构）；对于字符串也是如此。
     >编译器有各种技巧，编译器生成的汇编代码很少遵循您键入的完全相同的逻辑。
-
+        
+    | keyword| function |
+    |---|--|
+    | go | newproc |
+    | new | newobject |
+    | make | makeslice、makechan、makemap、makemap_small｜
+    | <-  -> | chansend1、chanrev1 |
