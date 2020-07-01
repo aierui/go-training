@@ -13,6 +13,7 @@ type response1 struct {
 
 type response2 struct {
 	Page   int      `json:"page"`
+	Page2  int      `json:"page"`
 	Fruits []string `json:"fruits"`
 }
 
@@ -51,6 +52,13 @@ func main() {
 	}
 	res2B, _ := json.Marshal(res2D)
 	fmt.Println(string(res2B))
+
+	jsonStr := `{"page": 1, "fruits": ["apple", "peach"] }`
+	data := response2{}
+	if err := json.Unmarshal([]byte(jsonStr), &data); err != nil {
+		panic(err)
+	}
+	fmt.Printf("data %#v\n", data)
 
 	jsonStr1 := `{"num":6.13,"strs":["a","b"]}`
 	var dat map[string]interface{}
