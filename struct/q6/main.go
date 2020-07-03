@@ -1,6 +1,5 @@
 package main
 
-
 import "fmt"
 
 type coder interface {
@@ -41,25 +40,59 @@ q5 index.go 中 前面说过，不管接收者类型是值类型还是指针类�
 
 */
 func main() {
-	//var c coder = &Gopher{"Go"}
-	//c.code()
-	//c.debug()
+	example1()
+	example2()
+	example3()
+	example4()
+	example5()
+	example6()
+}
 
-	//var c coder = &Gopher{"Go"}
-	//c.code()
-
-	//var c coder = &Gopher{"Go"}
-	//c.debug()
-
-	//var c = Gopher{"Go"}
-	//c.code()
-
-	//var c = Gopher{"Go"}
-	//c.debug()
-
-
-	var c coder = Gopher{"Go"} // ./index.go:41:6: cannot use Gopher literal (type Gopher) as type coder in assignment:
+func example1() {
+	var c coder = &Gopher{"Go"}
 	c.code()
 	c.debug()
+	/*
+		I am coding Go language
+		I am debuging Go language
+	*/
+}
 
+func example2() {
+	var c coder = &Gopher{"Go"}
+	c.code()
+	/*
+		I am coding Go language
+	*/
+}
+
+func example3() {
+	var c coder = &Gopher{"Go"}
+	c.debug()
+	/*
+		I am debuging Go language
+	*/
+}
+func example4() {
+	var c = Gopher{"Go"}
+	c.code()
+
+	/*
+		I am coding Go language
+	*/
+}
+func example5() {
+	var c = Gopher{"Go"}
+	c.debug()
+	/*
+		I am debuging Go language
+	*/
+}
+
+func example6() {
+	// 注意
+	// Gopher does not implement coder (debug method has pointer receiver)
+	var c coder = Gopher{"Go"} //  cannot use Gopher literal (type Gopher) as type coder in assignment:
+	c.code()
+	c.debug()
 }
