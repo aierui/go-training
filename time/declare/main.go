@@ -45,6 +45,9 @@ func main() {
 		fmt.Println(now.Unix())
 	}
 
+	du1 := 30 * time.Second
+	fmt.Println(du1) // 30s
+
 	/*
 		1592239837
 		2020-06-16 00:50:37
