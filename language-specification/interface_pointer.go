@@ -1,6 +1,5 @@
 package main
 
-
 // In line ABCD, which ones of them have syntax issues?
 
 type S struct {

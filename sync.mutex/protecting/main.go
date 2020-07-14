@@ -29,7 +29,7 @@ func main() {
 	fmt.Printf("flag CommandLine is %v \n", flag.CommandLine)
 
 	const (
-		max1 = 3  // 代表启用的goroutine的数量。
+		max1 = 3 // 代表启用的goroutine的数量。
 		max2 = 6 // 代表每个goroutine需要写入的数据块的数量。
 		max3 = 6 // 代表每个数据块中需要有多少个重复的数字。
 	)

@@ -6,12 +6,12 @@ type Person struct {
 	age int
 }
 
-func (p Person) howOld () int {
+func (p Person) howOld() int {
 	return p.age
 }
 
 func (p *Person) growUp() {
-	p.age ++
+	p.age++
 }
 
 /**
@@ -23,7 +23,7 @@ func (p *Person) growUp() {
 也就是说，不管方法的接收者是什么类型，该类型的值和指针都可以调用，不必严格符合接收者的类型。
 
 示例如下：
- */
+*/
 func main() {
 	A := Person{age: 18}
 	fmt.Println(A.howOld())

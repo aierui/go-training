@@ -14,11 +14,10 @@ func main() {
 		println()
 	}
 
-
 	n := make(map[int]*int)
 
 	for i := 0; i < N; i++ {
-		k := i;
+		k := i
 		n[i] = &k //A
 	}
 

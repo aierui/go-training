@@ -48,6 +48,6 @@ func DoubleAverage(count, amount int64) int64 {
 	rand.Seed(time.Now().UnixNano())
 	//加min是为了避免出现0值,上面也减去了min
 	x := rand.Int63n(avg2) + min
-	
+
 	return x
 }

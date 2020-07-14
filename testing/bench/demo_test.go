@@ -25,4 +25,3 @@ func BenchmarkGetPrimesWith1000000(b *testing.B) {
 		GetPrimes(1000000)
 	}
 }
-

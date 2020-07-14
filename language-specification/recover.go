@@ -15,4 +15,3 @@ func f() {
 func main() {
 	f()
 }
-

@@ -9,7 +9,6 @@ func main() {
 		println(v)
 	}
 
-
 	// correct
 	m := make(map[string]int)
 	m["a"] = 1

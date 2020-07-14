@@ -27,7 +27,6 @@ func main() {
 
 	println(len(m))
 
-
 	//m := make(map[int]int)
 	//
 	//wg := &sync.WaitGroup{}

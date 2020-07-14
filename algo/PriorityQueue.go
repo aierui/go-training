@@ -6,9 +6,9 @@ import (
 )
 
 type Item struct {
-	val string
+	val      string
 	priority int
-	index int
+	index    int
 }
 
 type PriorityQueue []*Item
@@ -21,19 +21,19 @@ func (pq PriorityQueue) Less(i, j int) bool {
 	return pq[i].priority > pq[j].priority
 }
 
-func (pq PriorityQueue) Swap(i, j int)  {
+func (pq PriorityQueue) Swap(i, j int) {
 	pq[i], pq[j] = pq[j], pq[i]
-	pq[i].index, pq[j].index = i,j
+	pq[i].index, pq[j].index = i, j
 }
 
-func (pq *PriorityQueue) Push(x interface{})  {
+func (pq *PriorityQueue) Push(x interface{}) {
 	n := len(*pq)
 	item := x.(*Item)
 	item.index = n
 	*pq = append(*pq, item)
 }
 
-func (pq *PriorityQueue) Pop()  interface{} {
+func (pq *PriorityQueue) Pop() interface{} {
 	old := *pq
 	n := len(old)
 	item := old[n-1]
@@ -41,7 +41,6 @@ func (pq *PriorityQueue) Pop()  interface{} {
 	*pq = old[0 : n-1]
 	return item
 }
-
 
 // 更新函数会修改队列中指定元素的优先级以及值。
 func (pq *PriorityQueue) update(item *Item, value string, priority int) {
@@ -65,7 +64,7 @@ func main() {
 	i := 0
 	for value, priority := range items {
 		pq[i] = &Item{
-			val:    value,
+			val:      value,
 			priority: priority,
 			index:    i,
 		}
@@ -75,7 +74,7 @@ func main() {
 
 	// 插入一个新元素，然后修改它的优先级。
 	item := &Item{
-		val:    "orange",
+		val:      "orange",
 		priority: 1,
 	}
 	heap.Push(&pq, item)

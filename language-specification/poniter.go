@@ -1,6 +1,5 @@
 package main
 
-
 type S struct {
 	m string
 }
@@ -8,7 +7,7 @@ type S struct {
 func f() *S {
 	//return __ //A
 
-	return &S{"foo"};
+	return &S{"foo"}
 }
 
 func main() {

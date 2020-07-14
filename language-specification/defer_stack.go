@@ -16,5 +16,3 @@ func main() {
 	b, err := ioutil.ReadAll(f)
 	println(string(b))
 }
-
-

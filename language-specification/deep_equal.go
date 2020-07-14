@@ -15,7 +15,6 @@ type S struct {
 
 // @todo 这里可以画一张各个类型对比表，类似 https://www.php.net/manual/zh/types.comparisons.php
 
-
 func main() {
 	x := interface{}(&S{"a", "b", "c"})
 	y := interface{}(&S{"a", "b", "c"})
@@ -31,11 +30,10 @@ func main() {
 	var b rune = '1'
 	fmt.Println(a == b)
 
-
 	var a1 int = 1
 	var b1 int = 2
 	var c float32 = 3.3
 	var d float32 = 4.4
 	fmt.Println(a1 == b1) // false 1 !=2
-	fmt.Println(c == d) // false
+	fmt.Println(c == d)   // false
 }

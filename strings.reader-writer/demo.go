@@ -28,7 +28,6 @@ func (userTable *UserTable) GetUser(i int) string {
 	return ""
 }
 
-
 // 并发安全操作 map
 func (userTable *UserTable) GetTable() map[int]string {
 	userTable.RLock()

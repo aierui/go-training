@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func main()  {
+func main() {
 
 	s1 := "abcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdef"
 	s2 := "qweeqweeqweeqweeqweeqweeqweeqweeqweeqweeqweeqweeqweeqweeqweeqweeqweeqweeqweeqweeqweeqweeqabc"

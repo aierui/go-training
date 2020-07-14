@@ -12,17 +12,15 @@ func main() {
 	var2 := float32(var1)
 	var3 := int64(var1)
 
-	fmt.Printf("%T->%v\n",var1, var1)
-	fmt.Printf("%T->%v\n",var2, var2)
-	fmt.Printf("%T->%v\n",var3, var3)
-
+	fmt.Printf("%T->%v\n", var1, var1)
+	fmt.Printf("%T->%v\n", var2, var2)
+	fmt.Printf("%T->%v\n", var3, var3)
 
 	var4 := new(int32)
 	fmt.Printf("%T->%v\n", var4, var4)
 	// src/puzzlers/interface/type_switch/chan.go:22:16: cannot convert var4 (type *int32) to type int32
 	//var5 := *int32(var4)
 	//fmt.Printf("%T->%v\n", var5, var5)
-
 
 	// 类型断言
 
