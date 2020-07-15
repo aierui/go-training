@@ -33,7 +33,7 @@ func (userTable *UserTable) GetTable() map[int]string {
 	userTable.RLock()
 	defer userTable.RUnlock()
 	newMap := make(map[int]string)
-	for seatID, _ := range userTable.table {
+	for seatID := range userTable.table {
 		newMap[seatID] = userTable.GetUser(seatID)
 	}
 	return newMap

@@ -22,7 +22,7 @@ func main() {
 ./escapes1.go:12:13: main ... argument does not escape
 ./escapes1.go:12:14: *x escapes to heap
 
- */
+*/
 
 // cmd
 // go tool compile -S  escapes1.go

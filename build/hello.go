@@ -1,6 +1,5 @@
 package hello
 
-
 // cmd
 // GOOS=linux GOARCH=amd64 go tool compile -S hello.go
 func hello(a int) int {
@@ -56,4 +55,4 @@ gclocals·33cdeccccebe80329f1fdbee7f5874cb SRODATA dupok size=8
         0x0000 01 00 00 00 00 00 00 00                          ........
 
 
- */
+*/

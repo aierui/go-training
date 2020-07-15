@@ -2,23 +2,19 @@ package main
 
 import "fmt"
 
-type S struct {}
-
+type S struct{}
 
 func main() {
 	isTrue()
 	//isFalse()
 }
 
-
-
-func isTrue()  {
+func isTrue() {
 	s1 := S{}
 	s2 := S{}
 
 	p1 := &s1
 	p2 := &s2
-
 
 	fmt.Println(p1 == p2)
 
@@ -28,7 +24,6 @@ func isTrue()  {
 	fmt.Println(p1 == p2)
 
 }
-
 
 // cmd
 // go tool compile -S true_or_false.go
@@ -59,7 +54,7 @@ func isTrue()  {
 ./true_or_false.go:49:12: isFalse ... argument does not escape
 ./true_or_false.go:49:28: &p2 escapes to heap
 
- */
+*/
 
 // 注释掉 fmt.Printf()
 // p1 == p2  // output false
@@ -77,8 +72,7 @@ func isTrue()  {
 ./true_or_false.go:862:28: &p1 escapes to heap
 ./true_or_false.go:863:12: isFalse ... argument does not escape
 ./true_or_false.go:863:28: &p2 escapes to heap
- */
-
+*/
 
 // cmd
 // go tool compile -S true_or_false.go
@@ -865,11 +859,9 @@ gclocals·3daa5366f746790047ee925a5b98a1d5 SRODATA dupok size=14
         0x0020 00 00 00 00 00 00 00 00                          ........
         rel 16+8 t=1 type.[1]interface {}+0
         rel 32+8 t=1 type.[1]interface {}+0
- */
+*/
 
-
-
-func isFalse()  {
+func isFalse() {
 	s1 := S{}
 	s2 := S{}
 
