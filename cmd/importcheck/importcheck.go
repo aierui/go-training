@@ -29,11 +29,13 @@ import (
 )
 
 func main() {
+	fmt.Println("import check start")
 	err := run()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "import check fail: %s\n", err)
 		os.Exit(1)
 	}
+	fmt.Println("import check finished")
 }
 
 func run() error {
