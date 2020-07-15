@@ -1,4 +1,4 @@
-package sonwflake
+package snowflake
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 )
 
 func TestNextId(t *testing.T) {
-	num, sliceLen, dup := checkDuplicated(10000000)
+	num, sliceLen, dup := checkDuplicated(1)
 	fmt.Printf("num %v sliceLen %v dup %v \n", num, sliceLen, dup)
 }
 

@@ -1,4 +1,4 @@
-package sonwflake
+package snowflake
 
 import (
 	"sync"
