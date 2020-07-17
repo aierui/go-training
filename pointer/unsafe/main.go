@@ -39,4 +39,11 @@ func main() {
 	num := *numP
 	fmt.Printf("This is an unexpected number: %d\n", num)
 
+	/*
+		nameP == &(dogP.name)? true
+		The name of dog is "little pig".
+		The name of dog is "monster".
+
+		This is an unexpected number: 17624963
+	*/
 }
