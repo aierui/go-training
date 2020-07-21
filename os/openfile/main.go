@@ -78,4 +78,7 @@ func main() {
 	fmt.Println("Try to create an existing file with flag os.O_EXCL ...")
 	_, err = os.OpenFile(filePath1, os.O_RDWR|os.O_CREATE|os.O_EXCL, 0666)
 	fmt.Printf("error: %v\n", err)
+	
+	// 相对路径
+	// 绝对路径
 }
