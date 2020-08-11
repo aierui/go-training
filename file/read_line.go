@@ -20,8 +20,8 @@ func main() {
 
 	for {
 		// delim
-		//line, err := buf.ReadString('\n')
-		line, _, err := buf.ReadLine()
+		line, err := buf.ReadString('\n')
+		//line, _, err := buf.ReadLine()
 		if err != nil || err == io.EOF {
 			break
 		} else {

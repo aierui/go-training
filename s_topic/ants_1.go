@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/panjf2000/ants"
 	"runtime"
 	"sync"
 	"time"
+
+	"github.com/panjf2000/ants"
 )
 
 var (

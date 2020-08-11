@@ -1,12 +1,7 @@
 package main
 
-
-
-var g //incorrect
+// var g //incorrect
 var g G //correct
-var g G{}
-var g = G{} //correct
-g := G{} //incorrect
-
-
-
+// var g1 G{}
+var g2 = G{} //correct
+// g := G{} //incorrect

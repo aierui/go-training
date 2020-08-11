@@ -27,7 +27,8 @@ func main() {
 	nameP := (*string)(unsafe.Pointer(namePtr))
 	fmt.Printf("nameP == &(dogP.name)? %v\n",
 		nameP == &(dogP.name))
-	fmt.Printf("The name of dog is %q.\n", *nameP)
+	fmt.Printf("The *nameP Type %T, dog is %q.\n", *nameP, *nameP)
+	fmt.Printf("The nameP Type %T, dog is %q.\n", nameP, nameP)
 
 	*nameP = "monster"
 	fmt.Printf("The name of dog is %q.\n", dogP.name)
@@ -39,4 +40,12 @@ func main() {
 	num := *numP
 	fmt.Printf("This is an unexpected number: %d\n", num)
 
+	/*
+		nameP == &(dogP.name)? true
+		The *nameP Type string, dog is "little pig".
+		The nameP Type *string, dog is %!q(*string=0xc000071e90).
+		The name of dog is "monster".
+
+		This is an unexpected number: 17781123
+	*/
 }
