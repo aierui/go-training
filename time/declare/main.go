@@ -45,6 +45,9 @@ func main() {
 		fmt.Println(now.Unix())
 	}
 
+	now, err = time.Parse(layoutTime, "1970-01-01 00:00:01")
+	fmt.Printf("now ==> %v, err ==> %v\n", now, err)
+
 	du1 := 30 * time.Second
 	fmt.Println(du1) // 30s
 
