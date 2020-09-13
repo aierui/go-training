@@ -1,10 +1,8 @@
 # 问题
 
-```go
-    m := make(map[k]v, hint)
+m := make(map[k]v, hint)
 
-    [makemap](https://github.com/golang/go/blob/master/src/runtime/map.go#L303) implements Go map creation for make(map[k]v, hint).
-```
+[makemap](https://github.com/golang/go/blob/master/src/runtime/map.go#L303) implements Go map creation for make(map[k]v, hint).
 
 
 ## 为什么字典的键类型会受到约束？
