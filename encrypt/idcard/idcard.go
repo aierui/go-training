@@ -87,6 +87,21 @@ func RandIdCard() string {
 
 func main() {
 	// 1. 测试AES256-gcm算法
+	key := "c0a800715f427e485728a3175a4079b0"
+	idCarad := "412345432134512125"
+	fmt.Printf("idCard: %s\n", idCarad)
+
+	cipherText := ExampleNewGCMEncrypter(key, idCarad)
+	fmt.Printf("cipherText: %s\n", cipherText) //12字节随机IV，18字节密文，16字节mac校验值
+
+	plainText := ExampleNewGCMDecrypter(key, cipherText)
+	fmt.Printf("plainText: %s\n", plainText)
+
+// dc46ce1aa7dd64b2deb425e139b077a4b2d14a7cf2e00818ff3ea2c6e6aa92e742bf20f18635153a998dba59a79a
+}
+
+func t1() {
+	// 1. 测试AES256-gcm算法
 	key := "AES256Key-32Characters1234567890"
 	idCarad := RandIdCard()
 	fmt.Printf("idCard: %s\n", idCarad)
