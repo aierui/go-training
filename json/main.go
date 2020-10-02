@@ -89,4 +89,15 @@ func main() {
 	enc := json.NewEncoder(os.Stdout)
 	d := map[string]int{"apple": 5, "lettuce": 7}
 	enc.Encode(d)
+
+	m1 := make(map[int]string, 0)
+	m1[0] = "2020-09-16 07:00:00"
+
+	m12Json, _ := json.Marshal(m1)
+	fmt.Printf("m12Json = %v\n", string(m12Json))
+
+	m1Res := make(map[int]string, 0)
+	json.Unmarshal(m12Json, &m1Res)
+	fmt.Printf("m1Res = %#v\n", m1Res)
+
 }
