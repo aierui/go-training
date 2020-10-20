@@ -30,4 +30,20 @@ func main() {
 		key:name value:aierui type of value:string
 		key:age value:25 type of value:float64
 	*/
+
+	type rtn struct {
+		Name string `json:"name"`
+		Age  int    `json:"age"`
+	}
+
+	rt1 := &rtn{}
+	_ = json.Unmarshal(b, rt1)
+	fmt.Printf("rt1 %#v value:%v type of value:%T\n", rt1, rt1.Name, rt1.Name)
+	fmt.Printf("rt1 %#v value:%v type of value:%T\n", rt1, rt1.Age, rt1.Age)
+
+	/*
+		rt1 &main.rtn{Name:"aierui", Age:25} value:aierui type of value:string
+		rt1 &main.rtn{Name:"aierui", Age:25} value:25 type of value:int
+	*/
+
 }
