@@ -46,6 +46,10 @@ func main() {
 	tinyID2 = 999
 	fmt.Printf("value => %v valueType => %T valueMemorySize =>%v \n", tinyID2, tinyID2, unsafe.Sizeof(tinyID2))
 
+	var tinyID3 int8
+	tinyID3 = 100
+	fmt.Printf("value => %v valueType => %T valueMemorySize =>%v \n", tinyID3, tinyID3, unsafe.Sizeof(tinyID3))
+
 	type Person struct {
 		Name string `json:"name"`
 		Age  uint   `json:"age"`
@@ -65,6 +69,7 @@ func main() {
 		value => 1 valueType => int valueMemorySize =>8
 		value => 999 valueType => int valueMemorySize =>8
 		value => &{aierui 25} valueType => *main.Person valueMemorySize =>8
+		value => 100 valueType => int8 valueMemorySize =>1
 	*/
 
 	const PtrSize = 32 << uintptr(^uintptr(0)>>63)
