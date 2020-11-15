@@ -8,6 +8,6 @@ type Ag struct {
 	st  struct { // 16
 		str string
 	}
-	m map[string]int16
-	i interface{}
+	m map[string]int16 // 8
+	i interface{}      // 16
 }
