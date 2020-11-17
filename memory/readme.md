@@ -9,4 +9,11 @@
 ```go
 structlayout -json github.com/aierui/go-training/memory/align Ag  | structlayout-svg -t 'align-guarantee' > ./memory/align/ag.svg
 ```
+
+```go
+// 内存对其检测
+
+golangci-lint run --disable-all --enable maligned align.go
+
+```
  
