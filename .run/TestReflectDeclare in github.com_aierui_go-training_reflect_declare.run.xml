@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="TestReflectDeclare in github.com/aierui/go-training/reflect/declare" type="GoTestRunConfiguration" factoryName="Go Test" singleton="false" nameIsGenerated="true">
+    <module name="go-training" />
+    <working_directory value="$PROJECT_DIR$/reflect/declare" />
+    <framework value="gotest" />
+    <kind value="PACKAGE" />
+    <package value="github.com/aierui/go-training/reflect/declare" />
+    <directory value="$PROJECT_DIR$/" />
+    <filePath value="$PROJECT_DIR$/" />
+    <pattern value="^TestReflectDeclare$" />
+    <method v="2" />
+  </configuration>
+</component>

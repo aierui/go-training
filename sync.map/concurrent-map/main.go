@@ -99,7 +99,7 @@ func main() {
 			actual2, loaded2, k2, v2)
 		v3 = pairs[3].v
 		actual3, loaded3 := cMap.LoadOrStore(k3, v3)
-		fmt.Printf("The result of LoadOrStore: %v, %v (key: %v, value: %v)\n",
+		fmt.Printf(r"The result of LoadOrStore: %v, %v (key: %v, value: %v)\n",
 			actual3, loaded3, k3, v3)
 
 		k1 := pairs[1].k
