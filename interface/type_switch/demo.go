@@ -18,7 +18,7 @@ func main() {
 
 	var4 := new(int32)
 	fmt.Printf("%T->%v\n", var4, var4)
-	// src/puzzlers/interface/type_switch/chan.go:22:16: cannot convert var4 (type *int32) to type int32
+	// cannot convert var4 (type *int32) to type int32
 	//var5 := *int32(var4)
 	//fmt.Printf("%T->%v\n", var5, var5)
 
@@ -28,4 +28,32 @@ func main() {
 	// <目标类型的值> := <表达式>.( 目标类型 )　　//非安全类型断言
 	// 类型断言的本质，跟类型转换类似，都是类型之间进行转换，不同之处在于，类型断言实在接口之间进行，
 	// 相当于Java中，对于一个对象，把一种接口的引用转换成另一种。
+
+	a := 1100
+	printType(a)
+
+	// ./demo.go:36:2: cannot type switch on non-interface value a (type int)
+	//switch a.(type) {
+	//case int:
+	//	fmt.Println("参数的类型是 int")
+	//case string:
+	//	fmt.Println("参数的类型是 string")
+	//}
+
+	switch interface{}(a).(type) {
+	case int:
+		fmt.Println("参数的类型是 int")
+	case string:
+		fmt.Println("参数的类型是 string")
+	}
+}
+
+func printType(i interface{}) {
+
+	switch i.(type) {
+	case int:
+		fmt.Println("参数的类型是 int")
+	case string:
+		fmt.Println("参数的类型是 string")
+	}
 }
