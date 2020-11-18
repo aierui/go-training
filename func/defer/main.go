@@ -11,7 +11,7 @@ func main() {
 	fmt.Println(c, d) // 0 3
 }
 
-// 匿名返回值
+// 匿名返回值（局部变量 b）
 func incr(a int) int {
 	var b int
 
