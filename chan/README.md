@@ -1,5 +1,7 @@
 ## Channel
 
+- https://qcrao.com/2019/07/22/dive-into-go-channel/
+- https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-channel/
 
 //关闭后的通道有以下特点：
 
