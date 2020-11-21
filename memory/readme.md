@@ -19,6 +19,9 @@ golangci-lint run --disable-all --enable maligned align.go
  
 
 ```go
+行指令
+https://maiyang.me/post/2020-07-21-go-nosplit/
+
 //go:nosplit (不支持栈增长)
 func newproc(siz int32, fn *funcval) {
 	argp := add(unsafe.Pointer(&fn), sys.PtrSize)
