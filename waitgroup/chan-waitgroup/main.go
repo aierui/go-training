@@ -49,7 +49,7 @@ func coordinateWithWaitGroupWithOutWait() {
 	max := int32(10)
 	go addNum(&num, 3, max, wg.Done)
 	go addNum(&num, 4, max, wg.Done)
-	wg.Wait()
+	//wg.Wait()
 }
 
 // addNum 用于原子地增加numP所指的变量的值。
