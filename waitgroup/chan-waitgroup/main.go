@@ -11,6 +11,8 @@ func main() {
 	coordinateWithChan()
 	fmt.Println()
 	coordinateWithWaitGroup()
+	fmt.Println()
+	coordinateWithWaitGroupWithOutWait()
 }
 
 func coordinateWithChan() {
@@ -33,6 +35,17 @@ func coordinateWithWaitGroup() {
 	wg.Add(2)
 	num := int32(0)
 	fmt.Printf("The number: %d [with sync.WaitGroup]\n", num)
+	max := int32(10)
+	go addNum(&num, 3, max, wg.Done)
+	go addNum(&num, 4, max, wg.Done)
+	wg.Wait()
+}
+
+func coordinateWithWaitGroupWithOutWait() {
+	var wg sync.WaitGroup
+	wg.Add(2)
+	num := int32(0)
+	fmt.Printf("The number: %d [with sync.WaitGroup WithOutWait]\n", num)
 	max := int32(10)
 	go addNum(&num, 3, max, wg.Done)
 	go addNum(&num, 4, max, wg.Done)
