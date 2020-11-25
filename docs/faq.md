@@ -50,7 +50,7 @@ The gopher has a model sheet illustrating his characteristics and how to represe
 ### 地鼠吉祥物的由来是什么？
 吉祥物和标志是由 `Renée French` 设计的，她还设计了 `Plan 9` 的兔子 `Glenda`。在一篇关于地鼠的博客文章中，她解释了地鼠是如何从她几年前用于WFMU T恤设计的图案中衍生出来的。这个标志和吉祥物采用了知识共享署名3.0许可。
 
-地鼠有一个模型表，说明了他的特征和如何正确地表现它们。该模型表最早是在2016年 `Renée` 在 `Gophercon` 的一次演讲中展示的。他有独特的特征，他是围棋地鼠，不是普通的地鼠。
+地鼠有一个模型表，说明了他的特征和如何正确地表现它们。该模型表最早是在2016年 `Renée` 在 `Gophercon` 的一次演讲中展示的。他有独特的特征，他是 Go 地鼠，不是普通的地鼠。
 
 ### Is the language called Go or Golang?
 The language is called Go. The "golang" moniker arose because the web site is golang.org, not go.org, which was not available to us. Many use the golang name, though, and it is handy as a label. For instance, the Twitter tag for the language is "#golang". The language's name is just plain Go, regardless.
@@ -58,7 +58,7 @@ The language is called Go. The "golang" moniker arose because the web site is go
 A side note: Although the official logo has two capital letters, the language name is written Go, not GO.
 
 ### 这门语言是叫Go还是Golang？
-这门语言叫做Go。产生 "golang "这个专名是因为网站是golang.org，而不是go.org，因为我们无法使用。不过很多人都在使用golang这个名字，它作为一个标签很方便。例如，该语言的 `Twitter` 标签是 "#golang"。不管怎么说，这种语言的名字就是普通的围棋。
+这门语言叫做Go。产生 "golang "这个专名是因为网站是golang.org，而不是go.org，因为我们无法使用。不过很多人都在使用golang这个名字，它作为一个标签很方便。例如，该语言的 `Twitter` 标签是 "#golang"。不管怎么说，这种语言的名字就是普通的 Go 。
 
 附带说明：虽然官方标志有两个大写字母，但语言名称写的是 `Go` ，而不是 `GO` 。
 
@@ -194,7 +194,7 @@ For the time being, we have a simple rule that can be expanded later without bre
 
 这个规则还有一个不幸的后果。由于导出的标识符必须以大写字母开头，所以根据定义，由某些语言中的字符创建的标识符不能导出。目前唯一的解决办法是使用类似X日本语这样的语言，但这显然不能令人满意。
 
-从最早的语言版本开始，人们就在考虑如何最好地扩展标识符空间，以适应使用其他母语的程序员。具体怎么做仍然是一个活跃的讨论话题，未来的语言版本可能会在标识符的定义上更加自由。例如，它可能会采用 `Unicode` 组织对标识符建议中的一些想法。无论发生什么，都必须兼容，同时保留（或扩大）字母大小写决定标识符可见性的方式，这仍然是我们最喜欢的围棋特性之一。
+从最早的语言版本开始，人们就在考虑如何最好地扩展标识符空间，以适应使用其他母语的程序员。具体怎么做仍然是一个活跃的讨论话题，未来的语言版本可能会在标识符的定义上更加自由。例如，它可能会采用 `Unicode` 组织对标识符建议中的一些想法。无论发生什么，都必须兼容，同时保留（或扩大）字母大小写决定标识符可见性的方式，这仍然是我们最喜欢的 Go 特性之一。
 
 目前，我们有一个简单的规则，可以在不破坏程序的情况下进行扩展，这个规则可以避免一个接纳模糊标识符的规则肯定会产生的错误。
 
@@ -256,7 +256,7 @@ We understand that this is a point of contention. There are many things in the G
 ### 为什么Go没有断言？
 Go没有提供断言。不可否认，它们很方便，但我们的经验是，程序员把它们当作一个拐杖，以避免考虑适当的错误处理和报告。正确的错误处理意味着服务器继续运行，而不是在发生非致命错误后崩溃。正确的错误报告意味着错误是直接的和重点的，使程序员免于解释一个大的崩溃跟踪。当看到错误的程序员不熟悉代码时，精确的错误尤为重要。
 
-我们理解这是一个争论点。围棋语言和库中有很多与现代实践不同的地方，只是因为我们觉得有时值得尝试不同的方法。
+我们理解这是一个争论点。 Go 语言和库中有很多与现代实践不同的地方，只是因为我们觉得有时值得尝试不同的方法。
 
 ### Why build concurrency on the ideas of CSP?
 Concurrency and multi-threaded programming have over time developed a reputation for difficulty. We believe this is due partly to complex designs such as pthreads and partly to overemphasis on low-level details such as mutexes, condition variables, and memory barriers. Higher-level interfaces enable much simpler code, even if there are still mutexes and such under the covers.
@@ -306,7 +306,7 @@ Even if your proposal is compatible with the Go 1 spec, it might not be in the s
 ### 你会接受我对语言的修改吗？
 人们经常建议对语言进行改进--邮件列表中包含了丰富的此类讨论历史--但很少有这些修改被接受。
 
-虽然围棋是一个开源项目，但语言和库受到兼容性承诺的保护，至少在源代码层面上防止了破坏现有程序的更改（程序可能需要偶尔重新编译以保持最新性）。如果你的建议违反了 `Go 1` 的规范，我们甚至不能接受这个想法，无论它的优点如何。未来的围棋主要版本可能会与 `Go 1` 不兼容，但关于这个话题的讨论才刚刚开始，有一点是肯定的：在这个过程中引入的这种不兼容的情况将非常少。此外，兼容性承诺鼓励我们为旧程序提供一条自动前进的道路，以便在出现这种情况时进行调整。
+虽然 Go 是一个开源项目，但语言和库受到兼容性承诺的保护，至少在源代码层面上防止了破坏现有程序的更改（程序可能需要偶尔重新编译以保持最新性）。如果你的建议违反了 `Go 1` 的规范，我们甚至不能接受这个想法，无论它的优点如何。未来的 Go 主要版本可能会与 `Go 1` 不兼容，但关于这个话题的讨论才刚刚开始，有一点是肯定的：在这个过程中引入的这种不兼容的情况将非常少。此外，兼容性承诺鼓励我们为旧程序提供一条自动前进的道路，以便在出现这种情况时进行调整。
 
 即使你的建议与 `Go 1` 规范兼容，也可能不符合Go的设计目标的精神。 `Go` 在 `Google` 的文章。语言设计为软件工程服务》一文解释了 `Go` 的起源及其设计背后的动机。
 
@@ -712,7 +712,7 @@ A blog post titled [Constants](https://blog.golang.org/constants) explores this 
 ### 常量在Go中是如何工作的？
 虽然 `Go` 对不同数值类型的变量之间的转换很严格，但语言中的常量却要灵活得多。字面常量，如 23、3.14159 和 math.Pi，占据了一种理想的数字空间，具有任意的精度，没有溢出或下溢。例如，math.Pi的值在源代码中被指定为63位，涉及该值的常量表达式保持的精度超出了 `float64` 所能容纳的范围。只有当常量或常量表达式被分配到一个变量--程序中的内存位置--时，它才会成为一个具有通常浮点属性和精度的 "计算机 "数字。
 
-此外，由于常量只是数字，而不是键入值，因此在围棋中，常量可以比变量更自由地使用，从而缓解了严格的转换规则带来的一些尴尬。我们可以写一些表达式，比如
+此外，由于常量只是数字，而不是键入值，因此在 Go 中，常量可以比变量更自由地使用，从而缓解了严格的转换规则带来的一些尴尬。我们可以写一些表达式，比如
 
 ```
 sqrt2 :=math.Sqrt(2)
@@ -769,7 +769,7 @@ The document titled Go Code Review Comments is a collection of very short essays
 ### 有Go编程风格指南吗？
 没有明确的风格指南，尽管肯定有一个可识别的 "Go风格"。
 
-`Go` 已经建立了一些惯例来指导命名、布局和文件组织方面的决定。文件 `Effective Go` 包含了一些关于这些主题的建议。更直接地说，程序 `gofmt` 是一个 `pretty-printer`，它的目的是执行布局规则；它取代了通常的do's和don's的汇编，允许解释。仓库中的所有围棋代码，以及开源世界中的绝大多数围棋代码，都是通过 `gofmt` 运行的。
+`Go` 已经建立了一些惯例来指导命名、布局和文件组织方面的决定。文件 `Effective Go` 包含了一些关于这些主题的建议。更直接地说，程序 `gofmt` 是一个 `pretty-printer`，它的目的是执行布局规则；它取代了通常的do's和don's的汇编，允许解释。仓库中的所有 Go 代码，以及开源世界中的绝大多数 Go 代码，都是通过 `gofmt` 运行的。
 
 这份名为《Go Code Review Comments》的文档，是一个非常简短的文章集，内容是关于 `Go` 习语中经常被程序员忽略的细节。对于为 `Go` 项目做代码审查的人来说，它是一个方便的参考。
 
@@ -988,7 +988,7 @@ The Go memory allocator reserves a large region of virtual memory as an arena fo
 To find the amount of actual memory allocated to a Go process, use the Unix top command and consult the RES (Linux) or RSIZE (macOS) columns.
 
 ### 为什么我的Go进程使用了这么多虚拟内存？
-`Go` 内存分配器保留了一个很大的虚拟内存区域作为分配的舞台。这个虚拟内存是特定的围棋进程的本地内存；保留并没有剥夺其他进程的内存。
+`Go` 内存分配器保留了一个很大的虚拟内存区域作为分配的舞台。这个虚拟内存是特定的 Go 进程的本地内存；保留并没有剥夺其他进程的内存。
 
 要想知道实际分配给Go进程的内存量，可以使用Unix顶级命令，并查阅 `RES`（Linux）或 `RSIZE`（macOS）列。
 
@@ -1385,7 +1385,7 @@ func main() {
 }
 ```
 
-现在，大多数围棋程序员都会使用一个工具goimports，它可以自动重写一个围棋源文件，使其有正确的导入，在实践中消除了未使用的导入问题。这个程序很容易和大多数编辑器连接，在编写围棋源文件时自动运行。
+现在，大多数 Go 程序员都会使用一个工具 `goimports`，它可以自动重写一个 Go 源文件，使其有正确的导入，在实践中消除了未使用的导入问题。这个程序很容易和大多数编辑器连接，在编写 Go 源文件时自动运行。
 
 ### Why does my virus-scanning software think my Go distribution or compiled binary is infected?
 This is a common occurrence, especially on Windows machines, and is almost always a false positive. Commercial virus scanning programs are often confused by the structure of Go binaries, which they don't see as often as those compiled from other languages.
@@ -1394,12 +1394,12 @@ If you've just installed the Go distribution and the system reports it is infect
 
 In any case, if you believe the report is in error, please report a bug to the supplier of your virus scanner. Maybe in time virus scanners can learn to understand Go programs.
 
-### 为什么我的病毒扫描软件认为我的围棋发行版或编译的二进制文件被感染了？
-这种情况很常见，特别是在Windows机器上，而且几乎总是假阳性。商业病毒扫描程序经常被围棋二进制文件的结构所迷惑，它们并不像那些从其他语言编译的二进制文件那样经常看到。
+### 为什么我的病毒扫描软件认为我的 Go 发行版或编译的二进制文件被感染了？
+这种情况很常见，特别是在Windows机器上，而且几乎总是假阳性。商业病毒扫描程序经常被 Go 二进制文件的结构所迷惑，它们并不像那些从其他语言编译的二进制文件那样经常看到。
 
-如果你刚刚安装了围棋发行版，系统却报告被感染了，那肯定是个错误。要想真正彻底，你可以通过比较下载页面上的校验和来验证下载。
+如果你刚刚安装了 Go 发行版，系统却报告被感染了，那肯定是个错误。要想真正彻底，你可以通过比较下载页面上的校验和来验证下载。
 
-无论如何，如果你认为报告有误，请向病毒扫描器的供应商报告错误。也许到时候病毒扫描器可以学会理解围棋程序。
+无论如何，如果你认为报告有误，请向病毒扫描器的供应商报告错误。也许到时候病毒扫描器可以学会理解 Go 程序。
 
 ## Performance（性能）
 ### Why does Go perform badly on benchmark X?
@@ -1418,7 +1418,7 @@ Go的设计目标之一是在可比程序上接近C语言的性能，然而在�
 
 不过，还是有改进的空间。编译器是好的，但还可以更好，许多库需要进行重大的性能改进，垃圾收集器还不够快。即使是这样，注意不要产生不必要的垃圾也会有很大的影响）。
 
-在任何情况下，围棋的竞争往往会非常激烈。随着语言和工具的发展，许多程序的性能有了显著的提高。请参阅关于剖析Go程序的博文，了解一个翔实的例子。
+在任何情况下， Go 的竞争往往会非常激烈。随着语言和工具的发展，许多程序的性能有了显著的提高。请参阅关于剖析Go程序的博文，了解一个翔实的例子。
 
 ## Changes from C（C的变化）
 ### Why is the syntax so different from C?
