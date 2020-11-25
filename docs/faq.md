@@ -288,13 +288,13 @@ Map access is unsafe only when updates are occurring. As long as all goroutines 
 As an aid to correct map use, some implementations of the language contain a special check that automatically reports at run time when a map is modified unsafely by concurrent execution.
 
 ### 为什么不将map操作定义为原子操作？
-经过长时间的讨论，我们决定地图的典型使用不需要多个 `goroutine` 的安全访问，在那些需要安全访问的情况下，地图很可能是一些更大的数据结构的一部分，或者是已经同步的计算。因此，要求所有的 `map` 操作都要抓取一个 `mutex`，会减慢大多数程序的速度，而增加少数程序的安全性。然而，这并不是一个容易的决定，因为这意味着不受控制的映射访问会使程序崩溃。
+经过长时间的讨论，我们决定 `map` 的典型使用不需要多个 `goroutine` 的安全访问，在那些需要安全访问的情况下， `map` 很可能是一些更大的数据结构的一部分，或者是已经同步的计算。因此，要求所有的 `map` 操作都要抓取一个 `mutex`，会减慢大多数程序的速度，而增加少数程序的安全性。然而，这并不是一个容易的决定，因为这意味着不受控制的映射访问会使程序崩溃。
 
-该语言不排除原子图更新。当需要的时候，比如托管一个不受信任的程序时，实现可以联锁地图访问。
+该语言不排除原子图更新。当需要的时候，比如托管一个不受信任的程序时，实现可以联锁 `map` 访问。
 
-只有当更新发生时，地图访问才是不安全的。只要所有的 `goroutine` 都只是读取地图中的元素，包括使用 `for range` 循环进行迭代，而不是通过分配给元素或进行删除来改变地图，那么它们在没有同步的情况下并发访问地图是安全的。
+只有当更新发生时， `map` 访问才是不安全的。只要所有的 `goroutine` 都只是读取 `map` 中的元素，包括使用 `for range` 循环进行迭代，而不是通过分配给元素或进行删除来改变 `map` ，那么它们在没有同步的情况下并发访问 `map` 是安全的。
 
-作为对正确使用地图的帮助，一些语言的实现包含了一个特殊的检查，当一个地图被并发执行的不安全修改时，它会在运行时自动报告。
+作为对正确使用 `map` 的帮助，一些语言的实现包含了一个特殊的检查，当一个 `map` 被并发执行的不安全修改时，它会在运行时自动报告。
 
 ### Will you accept my language change?
 People often suggest improvements to the language—the mailing list contains a rich history of such discussions—but very few of these changes have been accepted.
