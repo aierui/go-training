@@ -25,6 +25,9 @@ https://cbsheng.github.io/posts/%E6%8E%A2%E7%B4%A2golang%E7%A8%8B%E5%BA%8F%E5%90
 
 func main() {
 	fmt.Println("hello world!")
+	fmt.Println(runtime.GOOS)
+	fmt.Println(runtime.GOARCH)
+	cpu()
 }
 
 func cpu() {
