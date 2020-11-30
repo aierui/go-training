@@ -3,6 +3,8 @@ package deepcopy
 import (
 	"bytes"
 	"encoding/gob"
+	"fmt"
+	"reflect"
 	"testing"
 
 	"github.com/mohae/deepcopy"
@@ -46,6 +48,7 @@ type Basics struct {
 	Complex128s []complex128
 	Interface   interface{}
 	Interfaces  []interface{}
+	Params      map[string]interface{}
 }
 
 var src = Basics{
@@ -85,6 +88,57 @@ var src = Basics{
 	Complex128:  complex128(-128 + 12i),
 	Complex128s: []complex128{complex128(-128 + 11i), complex128(129 + 10i)},
 	Interfaces:  []interface{}{42, true, "pan-galactic"},
+	Params: map[string]interface{}{
+		"test":   1,
+		"oid1":   "12345643das",
+		"oid2":   2134567623213246,
+		"data":   64.1,
+		"slice1": "[\"test\", \"m1\", \"n1\"]",
+	},
+}
+
+// go test -v -run=^$ -bench=. -benchtime=10s -cpuprofile=prof.cpu -memprofile=prof.mem -memprofilerate=2
+// go tool pprof -http=:8081 prof.cpu
+// go tool pprof -http=:8082 prof.mem
+
+func TestGOB(t *testing.T) {
+	var dst Basics
+	err := GOBDeepCopy(&dst, &src)
+	if err != nil {
+		t.Error(err)
+	}
+
+	rtn := reflect.DeepEqual(dst, src)
+	fmt.Println(rtn)
+}
+
+func TestDeepCopy(t *testing.T) {
+	dst := deepcopy.Copy(src).(Basics)
+	if !dst.Bool {
+		t.Error("reflect deep copy failed")
+	}
+	rtn := reflect.DeepEqual(dst, src)
+	fmt.Println(rtn)
+}
+
+func TestDeepCopyByPointer(t *testing.T) {
+	dst := DeepCopyByPointer(&src)
+	rtn := reflect.DeepEqual(&src, dst)
+	if !rtn {
+		t.Error("deep copy failed")
+	}
+}
+
+func Benchmark_DeepCopyByPointer(b *testing.B) {
+	// use b.N for looping
+	for i := 0; i < b.N; i++ {
+		//var dst Basics
+		dst := DeepCopyByPointer(&src)
+		rtn := reflect.DeepEqual(&src, dst)
+		if !rtn {
+			b.Error("deep copy failed")
+		}
+	}
 }
 
 func Benchmark_GOBDeepCopy(b *testing.B) {
@@ -117,4 +171,10 @@ func GOBDeepCopy(dst, src interface{}) error {
 		return err
 	}
 	return gob.NewDecoder(bytes.NewBuffer(buf.Bytes())).Decode(dst)
+}
+
+func DeepCopyByPointer(src *Basics) *Basics {
+	tmp := &Basics{}
+	*tmp = *src
+	return tmp
 }
