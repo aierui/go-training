@@ -48,3 +48,34 @@ func TestSliceAppendLenAndCap(t *testing.T) {
 		PASS
 	*/
 }
+
+func TestAppendP(t *testing.T) {
+	a := make([]int, 32)
+	a = append(a, 1)
+
+	fmt.Println(a)
+
+	b := make([]int, 32)
+	c := b[1:16]
+	fmt.Println(b, c)
+
+	b[3] = 9
+	fmt.Println(b, c)
+
+	fmt.Printf("The length of b: %d, The capacity of b: %d\n", len(b), cap(b))
+	fmt.Printf("The length of c: %d, The capacity of c: %d\n", len(c), cap(c))
+
+	b = append(b, 1)
+	b[2] = 8
+	fmt.Println(b, c)
+
+	fmt.Printf("The length of b: %d, The capacity of b: %d\n", len(b), cap(b))
+	fmt.Printf("The length of c: %d, The capacity of c: %d\n", len(c), cap(c))
+
+	/*
+		[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1]
+		[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+		[0 0 0 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] [0 0 9 0 0 0 0 0 0 0 0 0 0 0 0]
+		[0 0 8 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1] [0 0 9 0 0 0 0 0 0 0 0 0 0 0 0]
+	*/
+}
