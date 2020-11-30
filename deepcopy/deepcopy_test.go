@@ -174,7 +174,7 @@ func GOBDeepCopy(dst, src interface{}) error {
 }
 
 func DeepCopyByPointer(src *Basics) *Basics {
-	tmp := &Basics{}
-	*tmp = *src
-	return tmp
+	dst := &Basics{}
+	*dst = *src
+	return dst
 }
