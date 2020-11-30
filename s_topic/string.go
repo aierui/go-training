@@ -31,6 +31,7 @@ func main() {
 	//strings.Index(s[j:i], string(s[i]))
 
 	//
+	// 参考 source src/fmt/doc.go
 	/**
 	General
 	%v 以默认的方式打印变量的值
@@ -96,10 +97,6 @@ func main() {
 	%p 带0x的指针
 	%#p 不带0x的指针
 
-	作者：gowk
-	链接：https://www.jianshu.com/p/8be8d36e779c
-	来源：简书
-	著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 
 	// https://golang-examples.tumblr.com/post/86795367134/fmtprintf-format-reference-cheat-sheet
