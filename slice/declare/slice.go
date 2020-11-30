@@ -14,6 +14,12 @@ func main() {
 	fmt.Printf("The value of s2: %d\n", s2)
 	fmt.Println()
 
+	str2 := make([]string, 5, 8)
+	fmt.Printf("The length of str2: %v\n", len(str2))
+	fmt.Printf("The capacity of str2: %v\n", cap(str2))
+	fmt.Printf("The value of str2: %v\n", str2)
+	fmt.Println()
+
 	// 示例2。
 	s3 := []int{1, 2, 3, 4, 5, 6, 7, 8}
 	s4 := s3[3:6]
