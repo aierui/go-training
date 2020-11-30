@@ -76,6 +76,10 @@ func TestAppendP(t *testing.T) {
 		[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1]
 		[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
 		[0 0 0 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] [0 0 9 0 0 0 0 0 0 0 0 0 0 0 0]
+		The length of b: 32, The capacity of b: 32
+		The length of c: 15, The capacity of c: 31
 		[0 0 8 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1] [0 0 9 0 0 0 0 0 0 0 0 0 0 0 0]
+		The length of b: 33, The capacity of b: 64
+		The length of c: 15, The capacity of c: 31
 	*/
 }
