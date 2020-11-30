@@ -122,27 +122,14 @@ func TestDeepCopy(t *testing.T) {
 }
 
 func TestDeepCopyByPointer(t *testing.T) {
-	dst := DeepCopyByPointer(&src)
+	dst := DeepCopyByPointerValue(&src)
 	rtn := reflect.DeepEqual(&src, dst)
 	if !rtn {
 		t.Error("deep copy failed")
 	}
 }
 
-func Benchmark_DeepCopyByPointer(b *testing.B) {
-	// use b.N for looping
-	for i := 0; i < b.N; i++ {
-		//var dst Basics
-		dst := DeepCopyByPointer(&src)
-		rtn := reflect.DeepEqual(&src, dst)
-		if !rtn {
-			b.Error("deep copy failed")
-		}
-	}
-}
-
 func Benchmark_GOBDeepCopy(b *testing.B) {
-	// use b.N for looping
 	for i := 0; i < b.N; i++ {
 		var dst Basics
 		err := GOBDeepCopy(&dst, &src)
@@ -153,11 +140,20 @@ func Benchmark_GOBDeepCopy(b *testing.B) {
 }
 
 func Benchmark_ReflectDeepCopy(b *testing.B) {
-	// use b.N for looping
 	for i := 0; i < b.N; i++ {
-		dst := deepcopy.Copy(src).(Basics)
+		dst := deepcopy.Copy(src).(Basics) // github.com/mohae/deepcopy
 		if !dst.Bool {
 			b.Error("reflect deep copy failed")
+		}
+	}
+}
+
+func Benchmark_DeepCopyByPointerValue(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		dst := DeepCopyByPointerValue(&src)
+		rtn := reflect.DeepEqual(&src, dst)
+		if !rtn {
+			b.Error("deep copy failed")
 		}
 	}
 }
@@ -173,7 +169,8 @@ func GOBDeepCopy(dst, src interface{}) error {
 	return gob.NewDecoder(bytes.NewBuffer(buf.Bytes())).Decode(dst)
 }
 
-func DeepCopyByPointer(src *Basics) *Basics {
+// Copy by Pointer Value
+func DeepCopyByPointerValue(src *Basics) *Basics {
 	dst := &Basics{}
 	*dst = *src
 	return dst
