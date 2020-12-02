@@ -32,6 +32,19 @@ func main() {
 	err2 := jsoniter.Unmarshal([]byte(jsonStr2), ret2)
 	fmt.Printf("err %v\n", err2)
 	fmt.Println(ret2)
+
+	m1 := make(map[string]interface{}, 0)
+
+	//m1["product_id"] = 1
+	m1["id_no"] = "test"
+	m1["phone"] = "1234567"
+	m1["product_id"] = 1 // reset
+
+	rtn3 := &BizParam{}
+	err3 := convertInterfaceToStruct(m1, rtn3)
+	fmt.Printf("err3: %v\n", err3)
+	fmt.Printf("%#v\n", rtn3)
+
 }
 
 func convertInterfaceToStruct(p interface{}, v interface{}) error {
