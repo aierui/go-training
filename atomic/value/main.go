@@ -11,6 +11,7 @@ import (
 
 func main() {
 	// 示例1。
+	// 使用场景：读多写少 使用 atomic.Value
 	var box atomic.Value
 	fmt.Println("Copy box to box2.")
 	box2 := box // 原子值在真正使用前可以被复制。
