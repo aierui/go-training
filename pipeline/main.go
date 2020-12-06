@@ -5,17 +5,18 @@ import (
 	"sync"
 )
 
+// go tool compile -S -N -l main.go
 func main() {
 	// 组装pipeline
-	c := gen(2, 3)
-
-	out := sq(c)
-
-	// 消费输出
-	fmt.Println(<-out) // 4
-	fmt.Println(<-out) // 9
-
-	fmt.Println()
+	//c := gen(2, 3)
+	//
+	//out := sq(c)
+	//
+	//// 消费输出
+	//fmt.Println(<-out) // 4
+	//fmt.Println(<-out) // 9
+	//
+	//fmt.Println()
 
 	done := make(chan struct{})
 	defer close(done)
@@ -48,17 +49,18 @@ func main() {
 	//done <- struct{}{}
 }
 
-func gen(nums ...int) <-chan int {
-	out := make(chan int, 0)
+//func gen(nums ...int) <-chan int {
+//	out := make(chan int, 0)
+//
+//	go func() {
+//		for _, num := range nums {
+//			out <- num
+//		}
+//	}()
+//
+//	return out
+//}
 
-	go func() {
-		for _, num := range nums {
-			out <- num
-		}
-	}()
-
-	return out
-}
 func gen1(done chan struct{}, nums ...int) <-chan int {
 	out := make(chan int)
 
@@ -78,16 +80,16 @@ func gen1(done chan struct{}, nums ...int) <-chan int {
 	return out
 }
 
-func sq(in <-chan int) <-chan int {
-	out := make(chan int)
-	go func() {
-		for n := range in {
-			out <- n * n
-		}
-		close(out)
-	}()
-	return out
-}
+//func sq(in <-chan int) <-chan int {
+//	out := make(chan int)
+//	go func() {
+//		for n := range in {
+//			out <- n * n
+//		}
+//		close(out)
+//	}()
+//	return out
+//}
 
 func sq1(done <-chan struct{}, in <-chan int) <-chan int {
 	out := make(chan int)
