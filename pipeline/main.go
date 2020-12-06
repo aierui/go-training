@@ -44,7 +44,7 @@ func main() {
 	for n := range out1 {
 		fmt.Printf("merge result:%v\n", n)
 	}
-
+	fmt.Println("Finished!")
 	//done <- struct{}{}
 	//done <- struct{}{}
 }
