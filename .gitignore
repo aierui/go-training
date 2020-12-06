@@ -18,4 +18,5 @@ coverage.txt
 *.test
 *.cpu
 *.mem
+*.o
 # Dir
