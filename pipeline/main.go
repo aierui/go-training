@@ -17,22 +17,32 @@ func main() {
 
 	fmt.Println()
 
-	done := make(chan struct{}, 2)
+	done := make(chan struct{})
 	defer close(done)
 
-	in := gen(2, 3)
+	in := gen1(done, 2, 3)
 	// Distribute the sq work across two goroutines that both read from in
 	// 多个函数可以从相同的 channel 中读取，直到 channel 关闭，这称为：fan-out
-	c1 := sq(in)
-	c2 := sq(in)
+	//c1 := sq1(done, in)
+	//c2 := sq1(done, in)
+
+	sqWorkerNum := 1000
+	workers := make([]<-chan int, sqWorkerNum)
+	for i := 0; i < sqWorkerNum; i++ {
+		ch := sq1(done, in)
+		workers[i] = ch
+	}
 
 	//time.Sleep(1 * time.Second)
 
 	// Consume the merge output from c1 and c2.
 	// 一个函数可以从多个输入读取，然后处理直到所有的都关闭，然后关闭单个 channel。这称为 fan-in
-	for n := range merge(done, c1, c2) {
-		fmt.Println(n) // 4 then 9, then 4
+	for n := range merge(done, workers...) {
+		fmt.Printf("merge result:%v\n", n)
 	}
+
+	//done <- struct{}{}
+	//done <- struct{}{}
 }
 
 func gen(nums ...int) <-chan int {
@@ -46,18 +56,53 @@ func gen(nums ...int) <-chan int {
 
 	return out
 }
+func gen1(done chan struct{}, nums ...int) <-chan int {
+	out := make(chan int)
+
+	go func() {
+		defer close(out)
+		for _, num := range nums {
+			out <- num
+			select {
+			case out <- num:
+			case <-done:
+				fmt.Printf("gen1 finished\n")
+				return
+			}
+		}
+	}()
+
+	return out
+}
 
 func sq(in <-chan int) <-chan int {
 	out := make(chan int)
 	go func() {
+		for n := range in {
+			out <- n * n
+		}
+		close(out)
+	}()
+	return out
+}
+
+func sq1(done <-chan struct{}, in <-chan int) <-chan int {
+	out := make(chan int)
+	go func() {
+		defer close(out)
 		// When you range over a channel, iterations only produce a single value,
 		// the values that were sent on the channel.
 		// There is no index or key value like in case of slices or maps.
 		for n := range in {
 			fmt.Printf("n:%v, T:%T\n", n, n)
 			out <- n * n
+			select {
+			case out <- n * n:
+			case <-done:
+				fmt.Printf("sq1 finished\n")
+				return
+			}
 		}
-		close(out)
 	}()
 	return out
 }
@@ -74,11 +119,11 @@ func merge(done <-chan struct{}, cs ...<-chan int) <-chan int {
 		for v := range c {
 			select {
 			case out <- v:
-				fmt.Printf("inbound put outbound")
+				fmt.Printf("inbound put outbound\n")
 			case <-done:
-				fmt.Printf("Finished")
+				fmt.Printf("merge finished\n")
+				return
 			}
-
 		}
 	}
 
