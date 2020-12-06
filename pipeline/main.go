@@ -26,18 +26,21 @@ func main() {
 	//c1 := sq1(done, in)
 	//c2 := sq1(done, in)
 
-	sqWorkerNum := 1000
+	sqWorkerNum := 5
 	workers := make([]<-chan int, sqWorkerNum)
 	for i := 0; i < sqWorkerNum; i++ {
 		ch := sq1(done, in)
 		workers[i] = ch
 	}
 
+	fmt.Printf("%#v\n", workers)
+
 	//time.Sleep(1 * time.Second)
 
 	// Consume the merge output from c1 and c2.
 	// 一个函数可以从多个输入读取，然后处理直到所有的都关闭，然后关闭单个 channel。这称为 fan-in
-	for n := range merge(done, workers...) {
+	out1 := merge(done, workers...)
+	for n := range out1 {
 		fmt.Printf("merge result:%v\n", n)
 	}
 
@@ -119,7 +122,7 @@ func merge(done <-chan struct{}, cs ...<-chan int) <-chan int {
 		for v := range c {
 			select {
 			case out <- v:
-				fmt.Printf("inbound put outbound\n")
+				fmt.Printf("inbound put outbound, value:%v\n", v)
 			case <-done:
 				fmt.Printf("merge finished\n")
 				return
