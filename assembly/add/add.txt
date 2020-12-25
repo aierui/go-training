@@ -40,7 +40,7 @@
 	0x0000 00000 (main.go:9)	FUNCDATA	$0, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB) // FUNCDATA 跟垃圾回收有关，暂时不用理会 SP 指向当前栈顶部
 	0x0000 00000 (main.go:9)	FUNCDATA	$1, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)
 	0x0000 00000 (main.go:9)	MOVQ	$0, "".~r2+24(SP)
-	0x0009 00009 (main.go:11)	MOVQ	"".a+8(SP), AX // .a表示助记符，没有特别含义 8(SP)表示地址SP+8 这里是第一参数a, 因为当前栈为0且SP+0存储了函数返回地址
+	0x0009 00009 (main.go:11)	MOVQ	"".a+8(SP), AX // .a表示助记符，即add()的参数名，8(SP)表示地址SP+8 这里是第一参数a, 因为当前栈为0且SP+0存储了函数返回地址
 	0x000e 00014 (main.go:11)	ADDQ	"".b+16(SP), AX // 同理16(SP) 表示第二个参数b
 	0x0013 00019 (main.go:11)	MOVQ	AX, "".~r2+24(SP) // 24(SP)表示第一个返回值
 	0x0018 00024 (main.go:11)	RET
