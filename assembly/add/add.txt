@@ -36,13 +36,13 @@
 	rel 66+4 t=8 "".add+0
 	rel 81+4 t=8 runtime.morestack_noctxt+0
 "".add STEXT nosplit size=25 args=0x18 locals=0x0
-	0x0000 00000 (main.go:9)	TEXT	"".add(SB), NOSPLIT|ABIInternal, $0-24
-	0x0000 00000 (main.go:9)	FUNCDATA	$0, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)
+	0x0000 00000 (main.go:9)	TEXT	"".add(SB), NOSPLIT|ABIInternal, $0-24 // 声明了一个add函数，NOSPLIT告诉编译器不要插入分裂栈检查点 因为这里add函数的栈大小为0. $0 表示栈大小为0, $24 表示参数大小为24个字节
+	0x0000 00000 (main.go:9)	FUNCDATA	$0, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB) // FUNCDATA 跟垃圾回收有关，暂时不用理会 SP 指向当前栈顶部
 	0x0000 00000 (main.go:9)	FUNCDATA	$1, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)
 	0x0000 00000 (main.go:9)	MOVQ	$0, "".~r2+24(SP)
-	0x0009 00009 (main.go:11)	MOVQ	"".a+8(SP), AX
-	0x000e 00014 (main.go:11)	ADDQ	"".b+16(SP), AX
-	0x0013 00019 (main.go:11)	MOVQ	AX, "".~r2+24(SP)
+	0x0009 00009 (main.go:11)	MOVQ	"".a+8(SP), AX // .a表示助记符，没有特别含义 8(SP)表示地址SP+8 这里是第一参数a, 因为当前栈为0且SP+0存储了函数返回地址
+	0x000e 00014 (main.go:11)	ADDQ	"".b+16(SP), AX // 同理16(SP) 表示第二个参数b
+	0x0013 00019 (main.go:11)	MOVQ	AX, "".~r2+24(SP) // 24(SP)表示第一个返回值
 	0x0018 00024 (main.go:11)	RET
 	0x0000 48 c7 44 24 18 00 00 00 00 48 8b 44 24 08 48 03  H.D$.....H.D$.H.
 	0x0010 44 24 10 48 89 44 24 18 c3                       D$.H.D$..
