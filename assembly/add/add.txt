@@ -1,0 +1,55 @@
+"".main STEXT size=87 args=0x0 locals=0x30
+	0x0000 00000 (main.go:4)	TEXT	"".main(SB), ABIInternal, $48-0
+	0x0000 00000 (main.go:4)	MOVQ	(TLS), CX
+	0x0009 00009 (main.go:4)	CMPQ	SP, 16(CX)
+	0x000d 00013 (main.go:4)	PCDATA	$0, $-2
+	0x000d 00013 (main.go:4)	JLS	80
+	0x000f 00015 (main.go:4)	PCDATA	$0, $-1
+	0x000f 00015 (main.go:4)	SUBQ	$48, SP
+	0x0013 00019 (main.go:4)	MOVQ	BP, 40(SP)
+	0x0018 00024 (main.go:4)	LEAQ	40(SP), BP
+	0x001d 00029 (main.go:4)	FUNCDATA	$0, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)
+	0x001d 00029 (main.go:4)	FUNCDATA	$1, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)
+	0x001d 00029 (main.go:5)	MOVQ	$1, "".a+32(SP)
+	0x0026 00038 (main.go:5)	MOVQ	$2, "".b+24(SP)
+	0x002f 00047 (main.go:6)	MOVQ	"".a+32(SP), AX
+	0x0034 00052 (main.go:6)	MOVQ	AX, (SP)
+	0x0038 00056 (main.go:6)	MOVQ	$2, 8(SP)
+	0x0041 00065 (main.go:6)	PCDATA	$1, $0
+	0x0041 00065 (main.go:6)	CALL	"".add(SB)
+	0x0046 00070 (main.go:7)	MOVQ	40(SP), BP
+	0x004b 00075 (main.go:7)	ADDQ	$48, SP
+	0x004f 00079 (main.go:7)	RET
+	0x0050 00080 (main.go:7)	NOP
+	0x0050 00080 (main.go:4)	PCDATA	$1, $-1
+	0x0050 00080 (main.go:4)	PCDATA	$0, $-2
+	0x0050 00080 (main.go:4)	CALL	runtime.morestack_noctxt(SB)
+	0x0055 00085 (main.go:4)	PCDATA	$0, $-1
+	0x0055 00085 (main.go:4)	JMP	0
+	0x0000 65 48 8b 0c 25 00 00 00 00 48 3b 61 10 76 41 48  eH..%....H;a.vAH
+	0x0010 83 ec 30 48 89 6c 24 28 48 8d 6c 24 28 48 c7 44  ..0H.l$(H.l$(H.D
+	0x0020 24 20 01 00 00 00 48 c7 44 24 18 02 00 00 00 48  $ ....H.D$.....H
+	0x0030 8b 44 24 20 48 89 04 24 48 c7 44 24 08 02 00 00  .D$ H..$H.D$....
+	0x0040 00 e8 00 00 00 00 48 8b 6c 24 28 48 83 c4 30 c3  ......H.l$(H..0.
+	0x0050 e8 00 00 00 00 eb a9                             .......
+	rel 5+4 t=17 TLS+0
+	rel 66+4 t=8 "".add+0
+	rel 81+4 t=8 runtime.morestack_noctxt+0
+"".add STEXT nosplit size=25 args=0x18 locals=0x0
+	0x0000 00000 (main.go:9)	TEXT	"".add(SB), NOSPLIT|ABIInternal, $0-24 // 声明了一个add函数，NOSPLIT告诉编译器不要插入分裂栈检查点 因为这里add函数的栈大小为0. $0 表示栈大小为0, $24 表示参数大小为24个字节
+	0x0000 00000 (main.go:9)	FUNCDATA	$0, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB) // FUNCDATA 跟垃圾回收有关，暂时不用理会 SP 指向当前栈顶部
+	0x0000 00000 (main.go:9)	FUNCDATA	$1, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)
+	0x0000 00000 (main.go:9)	MOVQ	$0, "".~r2+24(SP)
+	0x0009 00009 (main.go:11)	MOVQ	"".a+8(SP), AX // .a表示助记符，即add()的参数名，8(SP)表示地址SP+8 这里是第一参数a, 因为当前栈为0且SP+0存储了函数返回地址
+	0x000e 00014 (main.go:11)	ADDQ	"".b+16(SP), AX // 同理16(SP) 表示第二个参数b
+	0x0013 00019 (main.go:11)	MOVQ	AX, "".~r2+24(SP) // 24(SP)表示第一个返回值
+	0x0018 00024 (main.go:11)	RET
+	0x0000 48 c7 44 24 18 00 00 00 00 48 8b 44 24 08 48 03  H.D$.....H.D$.H.
+	0x0010 44 24 10 48 89 44 24 18 c3                       D$.H.D$..
+go.cuinfo.packagename. SDWARFINFO dupok size=0
+	0x0000 6d 61 69 6e                                      main
+""..inittask SNOPTRDATA size=24
+	0x0000 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+	0x0010 00 00 00 00 00 00 00 00                          ........
+gclocals·33cdeccccebe80329f1fdbee7f5874cb SRODATA dupok size=8
+	0x0000 01 00 00 00 00 00 00 00                          ........
