@@ -16,6 +16,8 @@ func main() {
 	result = timeCompare(reportTimeNew2)
 
 	fmt.Println(result)
+
+	fmt.Println(isLastDay())
 }
 
 func timeCompare(reportTimeNew time.Time) bool {
@@ -27,4 +29,17 @@ func timeCompare(reportTimeNew time.Time) bool {
 		return true
 	}
 	return false
+}
+
+func isLastDay() bool {
+	//s := "1610506476"
+	tm := time.Unix(1610506476, 0).Add(86400 * time.Second)
+	rtn := time.Now().After(tm)
+	fmt.Printf("tm => %vm rtn %v\n", tm, rtn)
+
+	tm = time.Unix(1612680797, 0).Add(86400 * time.Second)
+	rtn = time.Now().After(time.Unix(1612680797, 0).Add(86400 * time.Second))
+	fmt.Printf("tm => %vm rtn %v\n", tm, rtn)
+
+	return rtn
 }
