@@ -27,17 +27,18 @@ func main() {
 	fmt.Println("hello world!")
 	fmt.Println(runtime.GOOS)
 	fmt.Println(runtime.GOARCH)
+
+	maxCPU := runtime.NumCPU()
+	NumGoroutine := runtime.NumGoroutine()
+
+	log.Println("maxCPU ", maxCPU)
+	log.Println("NumGoroutine ", NumGoroutine)
+
 	cpu()
 }
 
 func cpu() {
-	maxCPU := runtime.NumCPU()
-	NumGoroutine := runtime.NumGoroutine()
-	log.Println("maxCPU ", maxCPU)
-	log.Println("NumGoroutine ", NumGoroutine)
-
 	var num = 100
-
 	var sign = make(chan struct{}, num)
 
 	for i := 0; i < num; i++ {
@@ -55,8 +56,8 @@ func cpu() {
 		<-sign
 	}
 
-	maxCPU = runtime.NumCPU()
-	NumGoroutine = runtime.NumGoroutine()
+	maxCPU := runtime.NumCPU()
+	NumGoroutine := runtime.NumGoroutine()
 	log.Println("maxCPU ", maxCPU)
 	log.Println("NumGoroutine ", NumGoroutine)
 }
