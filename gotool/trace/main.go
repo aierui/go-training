@@ -20,10 +20,15 @@ func main() {
 	//step2. curl 'http://127.0.0.1:7777/debug/pprof/trace?seconds=20' > trace.out
 	//step2. go tool trace trace.out
 
-	// pprof
-	//step1. go run main
-	//step2. curl 'http://127.0.0.1:7777/debug/pprof/profile?seconds=20' > profile.out
-	//step3. go tool pprof -http=:9090  profile.out
+
+	// cpu
+	// step2. curl 'http://127.0.0.1:7777/debug/pprof/profile?seconds=20' > cpu
+	// step3. go tool pprof -http=:9090 cpu
+	// or.    go tool pprof http://127.0.0.1:7777/debug/pprof/profile?seconds=20
+
+	// mem
+	//step2. curl 'http://127.0.0.1:7777/debug/pprof/heap' > heap
+	//step3. go tool pprof -http=:9090 heap
 }
 
 func m() {
